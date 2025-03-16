@@ -19,6 +19,7 @@ import com.google.firebase.auth.*;
 import com.google.cloud.firestore.*;
 import com.google.api.core.ApiFuture;
 
+// testBranch test comment
 public class HelloApplication extends Application {
     public static Scene scene;
 
