@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class FirestoreContext {
 
+    // Initializes Google Cloud
     public Firestore firebase() {
         try {
 
@@ -28,7 +29,8 @@ public class FirestoreContext {
             ex.printStackTrace();
             System.exit(1);
         }
-        return FirestoreClient.getFirestore();
+        // returns Firestore db 
+        return FirestoreClient.getFirestore(); //
     }
 
 

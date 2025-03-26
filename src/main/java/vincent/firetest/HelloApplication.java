@@ -32,7 +32,7 @@ public class HelloApplication extends Application {
         fauth = FirebaseAuth.getInstance();
 
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        scene = new Scene(loadFXML("hello-view"), 640, 480);
+        scene = new Scene(loadFXML("second-view"), 640, 480);
         //scene = new Scene(loadFXML("second-view"), 640, 480);
 
         stage.setTitle("Hello!");

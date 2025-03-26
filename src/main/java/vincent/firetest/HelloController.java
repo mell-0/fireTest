@@ -95,20 +95,6 @@ public class HelloController
                     .setPassword(passwordTextField.getText())
                     .setDisabled(false);
 
-//        UserRecord.CreateRequest request = new UserRecord.CreateRequest();
-//
-//        try
-//        {
-//            request.setEmail(usernameTextField.getText()).setEmailVerified(false)
-//                    .setPassword(passwordTextField.getText()).setDisabled(false);
-//        }
-//        catch (IllegalArgumentException e)
-//        {
-//            System.out.println(e.getMessage());
-//            return false;
-//        }
-
-
             UserRecord userRecord;
 
             userRecord = HelloApplication.fauth.createUser(request);
@@ -117,13 +103,6 @@ public class HelloController
             return true;
 
         }
-
-//        catch (FirebaseAuthException ex)
-//        {
-//            // Logger.getLogger(FirestoreContext.class.getName()).log(Level.SEVERE, null, ex);
-//            System.out.println("Error creating a new user in the firebase");
-//            return false;
-//        }
         catch (IllegalArgumentException | FirebaseAuthException e)
         {
             String message = e.getMessage();
@@ -133,7 +112,10 @@ public class HelloController
                 messageText.setText("Email already in use");
             }
             else
+            {
                 System.out.println("Email not in valid format or password length must be >6");
+                messageText.setText("Email not in valid format or password length must be >6");
+            }
             return false;
         }
     }
@@ -144,6 +126,7 @@ public class HelloController
     */
     public void addUser() {
         // creates the Users collection in the db
+        // .collection is the specifying the collection & .document specifies the name of the document, in this we use a random generator for the name of the doc
         DocumentReference docRef = HelloApplication.fstore.collection("Users").document(UUID.randomUUID().toString());
 
         // creates the fields in the Users collection
