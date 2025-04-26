@@ -32,8 +32,8 @@ public class HelloApplication extends Application {
         fauth = FirebaseAuth.getInstance();
 
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        scene = new Scene(loadFXML("second-view"), 640, 480);
-        //scene = new Scene(loadFXML("second-view"), 640, 480);
+        //scene = new Scene(loadFXML("hello-view"), 640, 480);
+        scene = new Scene(loadFXML("hello-view")); // adding the width & hight here overrides the size on the fxml
 
         stage.setTitle("Hello!");
 
@@ -42,8 +42,11 @@ public class HelloApplication extends Application {
     }
 
     // need public static Scene, loadFXML
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+
+        Stage stage = (Stage) scene.getWindow();
+        stage.sizeToScene(); // This resizes the window to fit the new root’s preferred size
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

@@ -1,4 +1,4 @@
-package vincent.firetest;
+package vincent.firetest.Controllers;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
@@ -10,10 +10,11 @@ import com.google.firebase.auth.UserRecord;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import vincent.firetest.HelloApplication;
+import vincent.firetest.SessionManager;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -42,6 +43,7 @@ public class HelloController
 
     void initialize()
     {
+        System.out.println("Initializing1");
         //AccessDataView accessDataViewModel = new AccessDataView();
         //usernameTextField.textProperty().bindBidirectional(accessDataViewModel.personNameProperty());
         //register.disableProperty().bind(accessDataViewModel.isWritePossibleProperty().not());
@@ -76,6 +78,9 @@ public class HelloController
         System.out.println("register in clicked");
         if (registerUser())
             addUser();
+        else
+            System.out.println("problem registering user");
+        // add notification that
     }
 
     /*
@@ -172,9 +177,15 @@ public class HelloController
                     user = document.getData().get("UserName").toString();
                     pass = document.getData().get("Password").toString();
 
+
                     // exits the method and returns true when matching username & password was found
                     if (username.equals(user) && password.equals(pass))
+                    {
+                        SessionManager.setUserId(document.getId());
+                        System.out.println("ID: " + document.getId() + " " + SessionManager.getUserId()); // STORE THIS SOMEWHERE TO ACCESS THE ACCOUNT AND UPDATE THE SHOPPING LIST
                         return true;
+                    }
+
                 }
             }
             else

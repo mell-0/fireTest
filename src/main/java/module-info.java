@@ -12,7 +12,11 @@ module vincent.firetest {
     requires google.cloud.firestore;
     requires google.cloud.core;
     requires com.google.api.apicommon;
+    requires java.net.http;
+    requires org.json;
 
     opens vincent.firetest to javafx.fxml;
     exports vincent.firetest;
+    exports vincent.firetest.Controllers;
+    opens vincent.firetest.Controllers to javafx.fxml;
 }

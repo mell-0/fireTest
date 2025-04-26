@@ -80,6 +80,12 @@
             <version>1.11.0</version>
             <type>jar</type>
         </dependency>
+        <!-- API DEPENDENCIES -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
     </dependencies>
 
     <build>
